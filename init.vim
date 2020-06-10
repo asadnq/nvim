@@ -1,7 +1,7 @@
-source $HOME/.config/nvim/plugins.vim
 source $HOME/.config/nvim/autocmd.vim
 source $HOME/.config/nvim/general.vim
 source $HOME/.config/nvim/mappings.vim
+source $HOME/.config/nvim/plugins.vim
 source $HOME/.config/nvim/appearance.vim
 
 
