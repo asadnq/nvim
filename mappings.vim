@@ -16,8 +16,8 @@ nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 
 " resizing pane
-nnoremap <Leader>> :10winC ><CR>
-nnoremap <Leader>< :10winC <<CR>
+nnoremap <Leader>> :10winc ><CR>
+nnoremap <Leader>< :10winc <<CR>
 
 " Exit insert mode
 inoremap jk <ESC>
