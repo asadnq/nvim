@@ -10,10 +10,10 @@ inoremap <C-e> <Esc>$a
 inoremap <C-a> <Esc>I
 
 " switching pane
-nnoremap <Leader>h :wincmd h<CR>
-nnoremap <Leader>j :wincmd j<CR>
-nnoremap <Leader>k :wincmd k<CR>
-nnoremap <Leader>l :wincmd l<CR>
+nnoremap <silent> <Leader>h :wincmd h<CR>
+nnoremap <silent> <Leader>j :wincmd j<CR>
+nnoremap <silent> <Leader>k :wincmd k<CR>
+nnoremap <silent> <Leader>l :wincmd l<CR>
 
 " resizing pane
 nnoremap <Leader>> :10winc ><CR>
@@ -22,6 +22,7 @@ nnoremap <Leader>< :10winc <<CR>
 " Exit insert mode
 inoremap jk <ESC>
 inoremap <C-g> <Esc>
+vnoremap <C-g> <Esc>
 
 " buffers
 nnoremap <Leader>n :bnext<CR>
