@@ -2,6 +2,7 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'rust-lang/rust.vim'
 " Plug 'dart-lang/dart-vim-plugin'
 " Plug 'leafgarland/typescript-vim'
@@ -21,6 +22,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'altercation/vim-colors-solarized'
 Plug 'jacoborus/tender.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'haishanh/night-owl.vim'
 
 " UI
 Plug 'vim-airline/vim-airline'
@@ -47,6 +49,8 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Whooshh
@@ -90,9 +94,6 @@ let g:coc_git_status = 1
 " CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-
-" Defx
-noremap <C-n> :Defx<CR>
 
 " FZF
 let g:fzf_layout = { 'down': '~20%' }
@@ -233,18 +234,21 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Defx
+" Configure Defx
+
 call defx#custom#option('_', {
-      \ 'winwidth': 30,
+      \ 'winwidth': 40,
       \ 'split': 'vertical',
       \ 'show_ignored_files': 0,
       \ 'buffer_name': 'defxplorer',
       \ 'toggle': 1,
-      \ 'resume': 1
+      \ 'listed': 1,
+      \ 'resume': 1,
+      \ 'columns': 'git:indent:icons:filename:type'
       \ })
 
-" Toggle Defx using Ctrl + Space
-map <C-space> :Defx<CR>
+" Toggle Defx using Ctrl + n
+noremap <C-n> :Defx<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
