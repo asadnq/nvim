@@ -4,6 +4,8 @@ set shiftwidth=4
 set tabstop=4 softtabstop=4
 set expandtab
 set so=50
+set noshowmode
+set smartindent
 " set smartindent
 " set autoindent
 set ignorecase

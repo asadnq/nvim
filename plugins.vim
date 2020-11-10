@@ -2,6 +2,7 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+Plug 'artur-shaik/vim-javacomplete2'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 " Plug 'rust-lang/rust.vim'
 " Plug 'dart-lang/dart-vim-plugin'
@@ -32,12 +33,13 @@ Plug 'junegunn/vim-slash'
 Plug 'yggdroot/indentline'
 " Plug 'majutsushi/tagbar'
 Plug 'ryanoasis/vim-devicons'
-Plug 'ap/vim-css-color'
+" Plug 'ap/vim-css-color'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Fuzzy Finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/ferret'
 
 " File explorer
@@ -59,10 +61,14 @@ Plug 'easymotion/vim-easymotion'
 " Version control
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-" Plug 'apzelos/blamer.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'apzelos/blamer.nvim'
 
 " autoclose
 Plug 'alvan/vim-closetag'
+
+" Comments stuff out
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -80,16 +86,32 @@ nnoremap <leader>f <Plug>(coc-format-selected)
 nnoremap <leader>gg :Git<CR>
 
 " blamer
-"let g:blamer_enabled = 1
-"let g:blamer_delay = 1000
+" let g:blamer_enabled = 1
+let g:blamer_delay = 500
 
-" Airline
-let g:airline_powerline_fonts = 1
+" Configure Airline
+let g:airline_powerline_fonts = 0
 let g:airline#extensios#coc#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 let g:coc_git_status = 1
+let g:airline#extensions#tabline#excludes = []
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_tab_count = 2
+let g:airline_filetype_overrides = {
+  \ 'defx':  ['defx', '%{b:defx.paths[0]}'],
+  \ }
+
 
 " CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -237,15 +259,16 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Configure Defx
 
 call defx#custom#option('_', {
-      \ 'winwidth': 40,
+      \ 'winwidth': 38,
       \ 'split': 'vertical',
       \ 'show_ignored_files': 0,
       \ 'buffer_name': 'defxplorer',
       \ 'toggle': 1,
       \ 'listed': 1,
       \ 'resume': 1,
-      \ 'columns': 'git:indent:icons:filename:type'
+      \ 'columns': 'git:mark:indent:icons:filename:type'
       \ })
+let g:defx_icons_column_length=0
 
 " Toggle Defx using Ctrl + n
 noremap <C-n> :Defx<CR>
@@ -268,6 +291,8 @@ function! s:defx_my_settings() abort
   \ defx#do_action('open', 'pedit')
   nnoremap <silent><buffer><expr> o
   \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> O
+  \ defx#do_action('open_tree', 'recursive')
   nnoremap <silent><buffer><expr> K
   \ defx#do_action('new_directory')
   nnoremap <silent><buffer><expr> N
@@ -276,7 +301,7 @@ function! s:defx_my_settings() abort
   \ defx#do_action('new_multiple_files')
   nnoremap <silent><buffer><expr> C
   \ defx#do_action('toggle_columns',
-  \                'mark:indent:icon:filename:type:size:time')
+  \                'git:mark:indent:icons:filename:type:size:time')
   nnoremap <silent><buffer><expr> S
   \ defx#do_action('toggle_sort', 'time')
   nnoremap <silent><buffer><expr> d
@@ -314,3 +339,4 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> cd
   \ defx#do_action('change_vim_cwd')
 endfunction
+

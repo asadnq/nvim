@@ -7,3 +7,8 @@ autocmd FileType typescript nnoremap <Leader>x I/*<ESC>$a*/
 autocmd FileType typescript set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType typescriptreact nnoremap <Leader>x I/*<ESC>$a*/
 autocmd FileType typescriptreact set tabstop=2 softtabstop=2 shiftwidth=2
+
+" JSX
+autocmd FileType javascriptreact let b:coc_pairs_disabled = ['<']
+autocmd FileType typescriptreact let b:coc_pairs_disabled = ['<']
+

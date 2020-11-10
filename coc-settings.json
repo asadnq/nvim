@@ -1,6 +1,7 @@
 {
+    "suggest.maxCompleteItemCount": 13,
     "prettier.singleQuote": true,
     "prettier.trailingComma": "all",
     "prettier.semi": true,
-    "prettier.arrowParens": "always"
+    "prettier.arrowParens": "always",
 }
